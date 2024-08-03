@@ -1,0 +1,73 @@
+# Define default profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+# General application properties
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework: INFO
+    com.valuationservice: DEBUG
+
+# Service URLs
+services:
+  positions:
+    url: http://localhost:8080/positions
+  eligibility:
+    url: http://localhost:8080/eligibility
+  prices:
+    url: http://localhost:8080/prices
+  fxrates:
+    url: http://localhost:8080/fxrates
+
+# Base URL
+webclient:
+  baseurl: http://localhost:8081
+
+# Define configuration for dev profile
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+# Dev-specific properties can be overridden here if needed
+server:
+  port: 8081
+
+# Example dev-specific service URLs
+services:
+  positions:
+    url: http://localhost:8081/positions
+  eligibility:
+    url: http://localhost:8081/eligibility
+  prices:
+    url: http://localhost:8081/prices
+  fxrates:
+    url: http://localhost:8081/fxrates
+
+# Define configuration for prod profile
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+# Prod-specific properties can be overridden here if needed
+server:
+  port: 80
+
+# Example prod-specific service URLs
+services:
+  positions:
+    url: http://api.example.com/positions
+  eligibility:
+    url: http://api.example.com/eligibility
+  prices:
+    url: http://api.example.com/prices
+  fxrates:
+    url: http://api.example.com/fxrates
