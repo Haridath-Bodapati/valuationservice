@@ -11,9 +11,13 @@ Fetches asset prices, foreign exchange rates, and eligibility information from e
 
 # Technologies Used
 Java 21 
+
 Spring Boot Reactor (Spring WebFlux) 
+
 Maven - Build and dependency management 
+
 JUnit 5 - Unit testing 
+
 Mockito - Mocking framework for testing
 
 # Getting Started
