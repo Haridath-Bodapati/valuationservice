@@ -18,21 +18,20 @@ Prerequisites Java 11 or later Maven 3.6.3 or later
 # Installation
 Clone the repository:
 
-bash Copy code git clone https://github.com/Haridath-Bodapati/financial-services-valuation.git cd financial-services-valuation
+git clone https://github.com/Haridath-Bodapati/valuationservice.git
+cd valuationservice
 
 Build the project:
-bash Copy code mvn clean install
+mvn clean install
 
 Run the application:
-bash Copy code mvn spring-boot:run Running Tests
+mvn spring-boot:run Running Tests
 
 To run the test suite, use the following command:
-bash Copy code mvn test
+mvn test
 
 # Usage
-The application exposes a REST API that allows clients to request valuations for a set of account IDs and a target currency. For example, to calculate valuations, you can send a GET request to:
-
-bash Copy code http://localhost:8080/api/valuation?accountIds=account1,account2&currencyCode=USD
+The application exposes a REST API that allows clients to request valuations for a set of account IDs and a target currency. For example, to calculate valuations, you can run the Junit.
 
 Sample Data
 To facilitate testing, the project includes mock implementations for services like PositionsService, EligibilityService, PriceService, and FXService.
