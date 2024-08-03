@@ -10,7 +10,11 @@ The Financial Services Valuation System is a Java-based application designed to 
 Fetches asset prices, foreign exchange rates, and eligibility information from external services. Calculates the valuation of financial assets in different currencies. Provides a reactive API for efficient data processing and response handling.
 
 # Technologies Used
-Java 11 Spring Boot Reactor (Spring WebFlux) Maven - Build and dependency management JUnit 5 - Unit testing Mockito - Mocking framework for testing
+Java 21 
+Spring Boot Reactor (Spring WebFlux) 
+Maven - Build and dependency management 
+JUnit 5 - Unit testing 
+Mockito - Mocking framework for testing
 
 # Getting Started
 Prerequisites Java 11 or later Maven 3.6.3 or later
