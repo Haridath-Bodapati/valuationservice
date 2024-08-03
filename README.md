@@ -55,4 +55,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 # Contact
 For any questions or suggestions, please reach out to:
 
-Haridath Bodapati - haridath@gmail.com Project Repository - https://github.com/Haridath-Bodapati/valuationservice.git
+Haridath Bodapati - haridath@gmail.com 
+
+Project Repository - https://github.com/Haridath-Bodapati/valuationservice.git
