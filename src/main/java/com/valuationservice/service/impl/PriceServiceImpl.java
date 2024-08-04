@@ -25,7 +25,6 @@ public class PriceServiceImpl implements IPriceService {
 	@Override
 	public Mono<List<Price>> getPrices(List<String> assetIds) {
 		// Provide mock data for prices
-		return Mono.just(List.of(new Price("asset1", BigDecimal.valueOf(100), "USD"),
-				new Price("asset2", BigDecimal.valueOf(200), "GBP")));
+		return  Mono.empty();
 	}
 }

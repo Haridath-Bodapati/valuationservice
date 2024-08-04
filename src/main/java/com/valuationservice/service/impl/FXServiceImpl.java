@@ -25,6 +25,6 @@ public class FXServiceImpl implements IFXService {
 	@Override
 	public Mono<Map<String, BigDecimal>> getFxRates() {
 		// Provide mock data for FX rates
-		return Mono.just(Map.of("USD", BigDecimal.valueOf(1), "EUR", BigDecimal.valueOf(0.85)));
+		return Mono.empty();
 	}
 }

@@ -25,7 +25,6 @@ public class PostionsServiceImpl implements IPositionsService {
 	@Override
 	public Mono<List<Position>> getPositions(List<String> accountIds) {
 		// Provide mock data for positions
-		return Mono.just(List.of(new Position("asset1", BigDecimal.valueOf(10)),
-				new Position("asset2", BigDecimal.valueOf(20))));
+		return Mono.empty();
 	}
 }

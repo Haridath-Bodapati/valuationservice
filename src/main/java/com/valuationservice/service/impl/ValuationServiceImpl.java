@@ -2,6 +2,7 @@
 package com.valuationservice.service.impl;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +28,17 @@ import com.valuationservice.service.IValuationService;
 
 import reactor.core.publisher.Mono;
 
+/**
+ * Class calculates collateral value & market value for given accounts, which hold certains positions.
+ * Position = units (quantity) of certain assets, identified by assetId
+ * 
+ * Collateral value for account = Sum of collateral value for all positions in a given account.
+ * Collateral value for ‘eligible’ position = quantity x price x discount factor.
+ * Collateral value for ‘ineligible’ position = Zero.
+ * Market value for both ‘eligible’ & ‘ineligible’ positions = quantity x price.
+ * 
+ * @author Haridath Bodapati
+ */
 @Service
 public class ValuationServiceImpl implements IValuationService {
 
@@ -90,9 +102,24 @@ public class ValuationServiceImpl implements IValuationService {
 
 				if (price != null) {
 					BigDecimal assetPrice = price.getPrice();
-					BigDecimal valuation = assetPrice.multiply(quantity).multiply(currencyMultiplier);
+		            BigDecimal convertedPrice = assetPrice.multiply(currencyMultiplier);
+		            BigDecimal marketValue = quantity.multiply(convertedPrice).setScale(2, RoundingMode.HALF_UP);
+		            
+		            String accountId = position.getAccountId();
+		            Eligibility eligibility = eligibilityMap.getOrDefault(new AbstractMap.SimpleEntry<>(accountId, assetId), null);
 
-					ValuationResult result = new ValuationResult(position, valuation);
+		            BigDecimal collateralValue = BigDecimal.ZERO;
+		            
+		            if (eligibility != null && eligibility.isEligible()) {
+		                BigDecimal discountFactor = eligibility.getDiscount();
+		                collateralValue = marketValue.multiply(discountFactor).setScale(2, RoundingMode.HALF_UP);
+		            }
+		            
+		            ValuationResult result = resultMap.getOrDefault(accountId, new ValuationResult(accountId, BigDecimal.ZERO, BigDecimal.ZERO));
+		            
+		            result.setCollateralValue(result.getCollateralValue().add(collateralValue).setScale(2, RoundingMode.HALF_UP));
+		            result.setMarketValue(result.getMarketValue().add(marketValue).setScale(2, RoundingMode.HALF_UP));
+
 					resultMap.put(assetId, result);
 				}
 			}

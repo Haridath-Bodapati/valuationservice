@@ -25,7 +25,6 @@ public class EligibilityServiceImpl implements IEligibilityService {
 
 	@Override
 	public Mono<List<Eligibility>> getEligibility(List<String> accountIds, List<String> assetIds) {
-		return Mono.just(List.of(new Eligibility(List.of("account1"), List.of("asset1")),
-				new Eligibility(List.of("account2"), List.of("asset2"))));
+		return  Mono.empty();
 	}
 }

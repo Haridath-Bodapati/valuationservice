@@ -17,13 +17,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ValuationResult {
 	private String accountId;
-	private BigDecimal collateralValue;
-	private BigDecimal marketValue;
-	private Position position;
-	private BigDecimal valuation;
-
-	public ValuationResult(Position position, BigDecimal valuation) {
-		this.position = position;
-		this.valuation = valuation;
-	}
+    private BigDecimal collateralValue;
+    private BigDecimal marketValue;
 }
